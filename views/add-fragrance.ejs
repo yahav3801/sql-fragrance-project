@@ -1,0 +1,47 @@
+<%- include('partials/header.ejs') %>
+    <div class="container">
+        <% if (message != '') { %>
+            <p class="text-center text-danger"><%= message %></p>
+        <% } %>
+        <form class="add-fragrance-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="fragranceName" id="fragrance-name" placeholder="Fragrance Name" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <select class="form-control" name="designer" id="designer">
+                        <option selected disabled>-- Choose designer --</option>
+                        <% companies.forEach((company) => { %>
+                            <option value="<%= company.name %>"><%= company.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="number" class="form-control" name="price" id="price" placeholder="Price" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="mainAccords" id="main-accords" placeholder="Main Accords" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="topNotes" id="top-notes" placeholder="Top Notes" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="middleNotes" id="middle-notes" placeholder="Middle Notes" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="baseNotes" id="base-notes" placeholder="Base Notes" required>
+                </div>
+                
+                <div class="col-md-12">
+                    <label for="fragrance-img"><b>fragrance Image</b></label><br>
+                    <input type="file" name="image" id="fragrance-img" class="" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary float-right">Add fragrance</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

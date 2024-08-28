@@ -1,0 +1,54 @@
+<%- include('partials/header.ejs') %>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (fragrance) { %>
+        <form class="add-fragrance-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="fragrance-name">Fragrance Name</label>
+                    <input type="text" class="form-control" name="name" id="fragrance-name" value="<%= fragrance.name %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="designer">Designer</label>
+                    <select class="form-control" name="designer" id="designer" required>
+                        <option disabled>-- Choose Designer --</option>
+                        <% companies.forEach((company, index) => { %>
+                            <option value="<%= company.name%>" <% if (fragrance.designer===company.name) { %> selected <% } %>><%= company.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" name="price" id="price"  value="<%= fragrance.price %>" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="main-accords">Main accords</label>
+                    <input type="text" class="form-control" name="mainAccords" id="main-accords"  value="<%= fragrance.main_accords %>" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="top-notes">Top notes</label>
+                    <input type="text" class="form-control" name="topNotes" id="top-notes"  value="<%= fragrance.top_notes %>" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="middle-notes">Middle notes</label>
+                    <input type="text" class="form-control" name="middleNotes" id="middle-notes"  value="<%= fragrance.middle_notes %>" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="base-notes">Base notes</label>
+                    <input type="text" class="form-control" name="baseNotes" id="base-notes"  value="<%= fragrance.base_notes %>" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success float-right">Update Fragrance</button>
+        </form>
+    <% } else { %>
+        <p class="text-center">Fragrance Not Found. Go <a href="<%= hostingDir %>/add">here</a> to add fragrances.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>

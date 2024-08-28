@@ -1,0 +1,45 @@
+<%- include('partials/header.ejs') %>
+    <div class="table-wrapper">
+        <% if (fragrance.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Designer</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Main Accords</th>
+                        <th scope="col">Top Notes</th>
+                        <th scope="col">Middle Notes</th>
+                        <th scope="col">Base Notes</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% fragrance.forEach((frag, index) => { %>
+                        <tr>
+                            <th scope="row"><%= frag.id %></th>
+                            <td><img src="<%= hostingDir %>/assets/img/<%= frag.image %>" class="rounded-circle food-img" alt=""></td>
+                            <td><%= frag.name %></td>
+                            <td><%= frag.designer %></td>
+                            <td>$<%= frag.price %></td>
+                            <td><%= frag.main_accords %></td>
+                            <td><%= frag.top_notes %></td>
+                            <td><%= frag.middle_notes %></td>
+                            <td><%= frag.base_notes %></td>
+                            <td>
+                                <a href="<%= hostingDir %>/edit/<%= frag.id %>" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="<%= hostingDir %>/delete/<%= frag.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No fragrance found. Go <a href="<%= hostingDir %>/add" >here</a> to add fragrance.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
